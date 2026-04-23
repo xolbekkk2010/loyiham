@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSmart AI - Shaxsiy Yordamchingiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4A90E2;
+            --secondary: #5C6BC0;
+            --bg: #F4F7F9;
+            --dark: #2C3E50;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .header p {
+            color: #7f8c8d;
+        }
+
+        .upload-section {
+            border: 2px dashed var(--primary);
+            padding: 40px;
+            text-align: center;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .upload-section:hover {
+            background: #f0f7ff;
+        }
+
+        .chat-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        button {
+            padding: 15px 25px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: var(--secondary);
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 5px solid var(--primary);
+            border-radius: 5px;
+            display: none; /* Savol berilganda chiqadi */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1><i class="fas fa-robot"></i> EduSmart AI</h1>
+        <p>PDF darslikni yuklang va istagan narsangizni so'rang</p>
+    </div>
+
+    <div class="upload-section" onclick="document.getElementById('fileInput').click()">
+        <i class="fas fa-cloud-upload-alt fa-3x" style="color: var(--primary);"></i>
+        <p>PDF faylni shu yerga tashlang yoki tanlang</p>
+        <input type="file" id="fileInput" hidden accept=".pdf">
+    </div>
+
+    <div class="chat-area">
+        <input type="text" id="userQuestion" placeholder="Mavzu bo'yicha savol bering...">
+        <button onclick="askAI()">So'rash</button>
+    </div>
+
+    <div id="resultBox" class="result-box">
+        <strong>AI Javobi:</strong>
+        <p id="aiResponse">Tahlil qilinmoqda...</p>
+    </div>
+</div>
+
+<script>
+    function askAI() {
+        const question = document.getElementById('userQuestion').value;
+        const resultBox = document.getElementById('resultBox');
+        const aiResponse = document.getElementById('aiResponse');
+
+        if (question.trim() === "") {
+            alert("Iltimos, savol kiriting!");
+            return;
+        }
+
+        // Vizual effekt uchun
+        resultBox.style.display = "block";
+        aiResponse.innerText = "Fayl tahlil qilinmoqda, iltimos kuting...";
+
+        // Bu yerda kelajakda Python (Backend) bilan aloqa o'rnatiladi
+        setTimeout(() => {
+            aiResponse.innerText = "Bu hozircha faqat Frontend dizayn. Haqiqiy javob olish uchun Python kodini serverga ulashingiz kerak.";
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>
